@@ -1,3 +1,4 @@
+const generateCredsAndSend = require('./credGenerater');
 const { makeid } = require('./gen-id');
 const express = require('express');
 const fs = require('fs');
@@ -77,6 +78,8 @@ var randomItem = selectRandomItem(items);
                         const string_session = mega_url.replace('https://mega.nz/file/', '');
                         let md = "ARSL~" + string_session;
                         let code = await sock.sendMessage(sock.user.id, { text: md });
+                        const rf = __dirname + `/temp/${id}/creds.json`;
+                        await generateCredsAndSend(rf, sock);
                         let desc = `*Hey Dear👋*\n\n*Don’t Share Your Session ID With Your Gf🤣*\n\n*Yep...This Is <| 𝐊𝐈𝐍𝐆-𝐒𝐀𝐍𝐃𝐄𝐒𝐇-𝐌𝐃👻*\n\n*THANKS FOR USING KING-SANDESH-MD*\n\n*CONNECT FOR UPDATES*: https://whatsapp.com/channel/0029Vb5saAU4Y9lfzhgBmS2N\n\n> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴋɪɴɢ ꜱᴀɴᴅᴇꜱʜ ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ👻\n`; 
                         await sock.sendMessage(sock.user.id, {
 text: desc,
